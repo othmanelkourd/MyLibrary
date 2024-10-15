@@ -14,7 +14,7 @@ import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.applismile.mylibrary.data.ScanBookInformation
+import com.applismile.mylibrary.data.Constants
 import com.applismile.mylibrary.databinding.ActivityMainBinding
 import com.google.mlkit.vision.barcode.Barcode
 import com.google.mlkit.vision.barcode.BarcodeScanner
@@ -162,7 +162,7 @@ class ScannerActivity : AppCompatActivity() {
                     barcode?.rawValue?.let { value ->
                         binding.bottomText.text =
                             getString(R.string.barcode_value, value)
-                        ScanBookInformation.barcode = value
+                        Constants.barcode = value
                         Log.i("SCANNER", value)
                         finish()
                     }

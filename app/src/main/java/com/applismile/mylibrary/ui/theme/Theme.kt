@@ -52,7 +52,7 @@ fun MyLibraryTheme(
 
     MaterialTheme(
         colorScheme = colorScheme,
-        typography = Typography,
+        typography = textStyles,
         content = content
     )
 }
