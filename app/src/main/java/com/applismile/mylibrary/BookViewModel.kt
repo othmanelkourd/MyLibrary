@@ -15,7 +15,7 @@ import javax.inject.Inject
 class BookViewModel @Inject constructor(private val repository: Repository) : ViewModel() {
 
     init {
-        getProductsList("isbn:9780722532935")
+        getBookById("isbn:9780722532935")
     }
 
     private val _response: MutableStateFlow<NetWorkResult<BookInfoResponse>> =
@@ -23,7 +23,7 @@ class BookViewModel @Inject constructor(private val repository: Repository) : Vi
     val response: StateFlow<NetWorkResult<BookInfoResponse>> = _response
 
 
-    fun getProductsList(code: String) = viewModelScope.launch {
+    fun getBookById(code: String) = viewModelScope.launch {
         repository.getBookById(code).collect { values ->
             _response.value = values
         }
