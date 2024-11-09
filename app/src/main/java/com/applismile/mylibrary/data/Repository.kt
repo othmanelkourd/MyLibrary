@@ -1,5 +1,6 @@
 package com.applismile.mylibrary.data
 
+import androidx.annotation.WorkerThread
 import com.applismile.mylibrary.api.BookInfoResponse
 import com.applismile.mylibrary.api.NetWorkResult
 import com.applismile.mylibrary.api.toResultFlow
@@ -17,16 +18,22 @@ class Repository @Inject constructor(
     suspend fun getBookById(
         code: String
     ): Flow<NetWorkResult<BookInfoResponse>> {
-        return toResultFlow() {
+        return toResultFlow {
             remoteDataSource.getBookById(code)
         }
     }
 
+    @Suppress("RedundantSuspendModifier")
+    @WorkerThread
     suspend fun save(book: Book) {
         localDataSource.saveBook(book)
     }
 
     suspend fun getAllBooks(): Flow<List<Book>> {
         return flowOf(localDataSource.getAllBooks())
+    }
+
+    suspend fun deleteBook(book: Book) {
+        localDataSource.deleteBook(book)
     }
 }

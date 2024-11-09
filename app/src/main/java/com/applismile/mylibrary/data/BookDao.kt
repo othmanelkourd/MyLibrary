@@ -23,5 +23,5 @@ interface BookDao {
     fun insertBook(book: BookEntity)
 
     @Delete
-    fun delete(user: BookEntity)
+    fun delete(book: BookEntity)
 }

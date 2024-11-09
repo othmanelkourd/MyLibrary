@@ -14,4 +14,8 @@ class LocalDataSource @Inject constructor(
             it.toBook()
         }
     }
+
+    fun deleteBook(book: Book) {
+        db.bookDao().delete(book.toEntity())
+    }
 }

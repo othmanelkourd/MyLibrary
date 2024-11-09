@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -21,6 +22,7 @@ import androidx.lifecycle.ViewModel
 import com.applismile.mylibrary.BookViewModel
 import com.applismile.mylibrary.api.BookInfoResponse
 import com.applismile.mylibrary.api.NetWorkResult
+import com.applismile.mylibrary.data.Book
 import com.applismile.mylibrary.ui.theme.textStyles
 
 
@@ -30,8 +32,17 @@ fun HomePage(
 ) {
 
     val bookInfo = booksViewModel.response.collectAsState()
+    val allBooks = booksViewModel.allBooks.collectAsState()
 
     val result: NetWorkResult<BookInfoResponse> = bookInfo.value
+    val bookTitle = allBooks.value
+
+    LaunchedEffect(Unit) {
+        booksViewModel.getAllBooks()
+        booksViewModel.saveBook(
+            Book("12ZZEZEZEDFFF", "Clean code", 12343344)
+        )
+    }
 
     Column(
         modifier = Modifier
@@ -39,11 +50,14 @@ fun HomePage(
             .background(Color.White)
             .padding(16.dp)
     ) {
-        Text(
-            text = "Ma bibliothèque",
-            style = textStyles.titleLarge,
-            modifier = Modifier.padding(8.dp)
-        )
+        if (bookTitle.isNotEmpty()) {
+            Text(
+                text = bookTitle[0].title,
+                style = textStyles.titleLarge,
+                modifier = Modifier.padding(8.dp)
+            )
+        }
+
         Spacer(modifier = Modifier.height(16.dp))
 
         Text(
