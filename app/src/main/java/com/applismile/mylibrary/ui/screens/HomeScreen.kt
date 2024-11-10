@@ -69,12 +69,6 @@ fun HomePage(
 }
 
 
-@Composable
-fun HomeTitle() {
-    Text(text = "Ma bibliothèque", style = textStyles.titleLarge)
-}
-
-
 @Preview
 @Composable
 fun HomePagePreview() {
