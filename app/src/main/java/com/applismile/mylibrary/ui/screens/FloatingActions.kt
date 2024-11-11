@@ -24,9 +24,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.Build
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.Create
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
@@ -47,9 +45,8 @@ import androidx.compose.ui.unit.dp
 fun FloatingActionsUi() {
     var expanded by remember { mutableStateOf(false) }
     val items = listOf(
-        MiniFabItems(Icons.Filled.Home, "Home"),
-        MiniFabItems(Icons.Filled.Person, "Person"),
-        MiniFabItems(Icons.Filled.Build, "Settings")
+        MiniFabItems(Icons.Filled.Create, "Ajouter"),
+        MiniFabItems(Icons.Filled.Add, "Scanner"),
     )
     Column(horizontalAlignment = Alignment.End) {
         AnimatedVisibility(

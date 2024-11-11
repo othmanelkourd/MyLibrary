@@ -133,6 +133,10 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0")
     implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
 
+    implementation("io.coil-kt.coil3:coil-compose:3.0.2")
+    implementation("io.coil-kt.coil3:coil-network-okhttp:3.0.2")
+    implementation("io.coil-kt:coil-compose:2.2.2")
+
 
     kapt("com.google.dagger:hilt-android-compiler:2.44")
     testImplementation(libs.junit)
